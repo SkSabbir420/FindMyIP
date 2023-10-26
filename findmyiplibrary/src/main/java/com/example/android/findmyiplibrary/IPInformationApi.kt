@@ -5,6 +5,7 @@ import retrofit2.http.GET
 
 interface IPInformationApi {
 
-    @GET("json/")
+//    @GET("json/")
+    @GET("/json/")
     suspend fun getIPInformation(): Response<IPInformation>
 }
