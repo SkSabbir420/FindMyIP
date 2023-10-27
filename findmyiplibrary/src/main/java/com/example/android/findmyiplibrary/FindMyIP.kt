@@ -6,14 +6,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object FindMyIP {
 
-    suspend fun execute(): Response<IPInformation> {
+    suspend fun execute(): IPInformationApi {
 
         return Retrofit.Builder()
-            .baseUrl("https://ipapi.co")
+//            .baseUrl("https://ipapi.co")
+            .baseUrl("https://api.ipfind.com") //https://github.com/lukeyouell/craft-geocookie
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(IPInformationApi::class.java)
-            .getIPInformation()
     }
 
 }
