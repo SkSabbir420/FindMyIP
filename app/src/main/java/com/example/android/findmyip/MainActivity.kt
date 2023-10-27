@@ -29,12 +29,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         var information by mutableStateOf<String>("")
-        val myIp = "182.252.81.85"
 
         GlobalScope.launch {
-
+            val myIp = FindMyIP.getPublicIP()
+            Log.d("myIpp",myIp)
             information = FindMyIP.execute().getIPInformation(myIp).body().toString()
-//            Log.d("IpInformaion",information)
+            Log.d("IpInformaion",information)
         }
 
         setContent {

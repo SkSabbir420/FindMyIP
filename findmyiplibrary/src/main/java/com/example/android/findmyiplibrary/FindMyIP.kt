@@ -1,8 +1,10 @@
 package com.example.android.findmyiplibrary
 
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.Request
 
 object FindMyIP {
 
@@ -14,6 +16,15 @@ object FindMyIP {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(IPInformationApi::class.java)
+    }
+    fun getPublicIP(): String {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("http://icanhazip.com")
+            .build()
+
+        val response = client.newCall(request).execute()
+        return response.body?.string() ?: "N/A"
     }
 
 }
